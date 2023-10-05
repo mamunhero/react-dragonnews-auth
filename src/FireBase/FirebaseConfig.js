@@ -1,7 +1,7 @@
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
-console.log("inside firebase config", import.meta.env.Vite_Pass)
+console.log("inside firebase config", import.meta.env.VITE_Pass)
 
 const firebaseConfig = {
   apiKey: "AIzaSyCyyURNyeUeyWkkznQ3R1tWhgGphV3H8lA",

@@ -25,7 +25,7 @@ const Home = () => {
         <div className="md:col-span-2 border">
           <h2 className="text-2xl font-semibold text-[#403F3F]">Dragon News Home</h2>
           {
-            news.map((anews)=> <NewsInfo key={anews._id} news={anews}></NewsInfo>)
+            news && news.map((anews)=> <NewsInfo key={anews._id} news={anews}></NewsInfo>)
           }
         </div>
         <div className="border">
