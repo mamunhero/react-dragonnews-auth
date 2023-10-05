@@ -6,20 +6,27 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({children}) => {
+
+  /* 0 step declare usestate for loading */
+  const [loading, setLoading] = useState(true);
+
   /* 1st step useState declare for user */
   const [user, setUser] = useState(null);
   /* 2nd step declare createUser function for register */
   const createUser = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
   /* 3rd step declare signIn function for login */
   const createSignIn = (email, password) => {
+    setLoading(true)
     return  signInWithEmailAndPassword(auth, email, password)
   }
 
   /* 4th step logout */
 const logout = ()=> {
+  setLoading(true)
   return signOut(auth)
 }
 
@@ -27,7 +34,9 @@ const logout = ()=> {
   /* last step ovserbe user */
   useEffect(()=>{
     const unSubscribe =  onAuthStateChanged(auth, currentUser => {
-       setUser(currentUser)
+       setUser(currentUser);
+       /* loading finish */
+       setLoading(false);
     });
     return () => {
       unSubscribe
@@ -36,6 +45,7 @@ const logout = ()=> {
 
 
   const authInfo = {
+    loading,
     user,
     createUser,
     createSignIn,

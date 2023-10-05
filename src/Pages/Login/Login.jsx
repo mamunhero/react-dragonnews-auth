@@ -1,10 +1,15 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  /* 0 step location  jonno navigate use kora lagbe*/
+const location = useLocation();
+console.log(location);
+const navigate = useNavigate();
+
   /* 1st step declare usecontext  */
   const { createSignIn } = useContext(AuthContext);
   /* different way te handleLogin */
@@ -19,6 +24,11 @@ const Login = () => {
     createSignIn(email, password)
     .then(result=> {
       console.log(result.user)
+      // reset
+      // form.reset()
+      e.target.reset();
+      // navigate
+      navigate(location?.state ? location.state : "/");
     })
     .catch(error=> {
       console.log(error)

@@ -9,7 +9,7 @@ import newsimage from "../../assets/editorsInsight1.png"
 import moment from 'moment';
 import { useLoaderData } from "react-router-dom";
 import { key } from "localforage";
-import NewsInfo from "../Login/NewsInfo";
+import NewsInfo from "./NewsInfo";
 const Home = () => {
   const news = useLoaderData();
   console.log(news);
